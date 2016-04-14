@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  room: MyString
+  time: MyString
+  people_id: 
+  topic: MyString
+
+two:
+  room: MyString
+  time: MyString
+  people_id: 
+  topic: MyString

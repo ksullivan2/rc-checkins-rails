@@ -1,12 +1,16 @@
 class RecursersController < ApplicationController
 	def new
+		@recurser = Recurser.new
 	end
 
 	def create
 		@recurser = Recurser.new(recurser_params)
 
-		@recurser.save
-		redirect_to "/"
+		if @recurser.save
+			redirect_to "/"
+		else
+			render 'new'
+		end
 	end
 
 	private

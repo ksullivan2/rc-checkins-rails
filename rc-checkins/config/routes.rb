@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'home/index'
 
-  resources :recursers
+  resources :group_list do
+    resources :groups do
+      resources :recursers
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

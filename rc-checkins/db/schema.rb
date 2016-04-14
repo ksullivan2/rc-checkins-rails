@@ -11,13 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414195044) do
+ActiveRecord::Schema.define(version: 20160414205858) do
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "room"
+    t.string   "time"
+    t.integer  "recursers_id"
+    t.string   "topic"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "groups", ["recursers_id"], name: "index_groups_on_recursers_id"
 
   create_table "recursers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "group_id"
   end
+
+  add_index "recursers", ["group_id"], name: "index_recursers_on_group_id"
 
 end
