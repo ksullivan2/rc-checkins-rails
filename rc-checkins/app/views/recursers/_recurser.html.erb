@@ -1,3 +1,7 @@
+
+
 <p>
-	<%= recurser.name %>
+  <%= link_to recurser.name, [recurser.group, recurser],
+               method: :delete,
+               data: { confirm: 'Click OK to leave this group.' } %>
 </p>

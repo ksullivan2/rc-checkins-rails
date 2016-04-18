@@ -7,14 +7,23 @@
 		<strong>Time:</strong>
 		<%= group.time %>
 	</p>
-	<p>
-		<strong>Topic:</strong>
-		<%= group.topic %>
-	</p>
+	
+
+		<%= form_for :group, url: group_path(group), method: :patch do |g| %>
+			<p>
+		   	<%= g.label :topic %><br>
+		    <%= g.text_field :topic, :value => group.topic %>
+		  </p>
+		  <p>
+	    	<%= g.submit %>
+	  	</p>
+
+	
 	<p>
 		<strong>Recursers:</strong>
 		<%= render group.recursers %>
 	</p>
+<% end %>
 
 
 <h2>Join this group</h2>
