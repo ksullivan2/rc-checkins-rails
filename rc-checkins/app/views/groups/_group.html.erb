@@ -15,4 +15,32 @@
 		<strong>Recursers:</strong>
 		<%= render group.recursers %>
 	</p>
+
+
+<h2>Join this group</h2>
+<%= form_for([group, group.recursers.build]) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_area :email %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+	
+
+
+
+<!--
+	<p>
+  <%= link_to 'Destroy Group', [group],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+	</p>
+-->
+
 </div>

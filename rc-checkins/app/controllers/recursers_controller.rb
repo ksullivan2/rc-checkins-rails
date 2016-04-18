@@ -4,14 +4,17 @@ class RecursersController < ApplicationController
 	end
 
 	def create
-		@recurser = Recurser.new(recurser_params)
-
-		if @recurser.save
-			redirect_to "/"
-		else
-			render 'new'
-		end
+		@group = Group.find(params[:group_id])
+		@recurser = @group.recursers.create(recurser_params)
+		redirect_to "/"
 	end
+
+	def destroy
+    @group = Group.find(params[:group_id])
+    @recurser = @group.recursers.find(params[:id])
+    @recurser.destroy
+    redirect_to "/"
+  end
 
 	private
 		def recurser_params
