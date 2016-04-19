@@ -1,15 +1,10 @@
 class GroupsController < ApplicationController
 	def index
-		if !session[:current_user_id].nil?
+		if !session[:current_user].nil?
 			@groups = Group.all
-			#call current_user method from Application controller
-			#creates variable called @_current_user
-	    current_user()
 		else
 			redirect_to '/login'
 		end
-
-		# @groups = Group.all
 	end
 
 	def new

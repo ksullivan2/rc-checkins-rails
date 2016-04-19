@@ -2,8 +2,7 @@ class LoginsController < ApplicationController
 
 
 	def create
-		@user_id = params[:logins][:name]
-    session[:current_user_id] = @user_id
+    session[:current_user] = {:name => params[:logins][:name]}
     redirect_to "/" 
   end
 

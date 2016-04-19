@@ -10,7 +10,7 @@
 
 <div id="main-container">
 	<h1>Sign up for Check-Ins</h1>
-	<h3>You are logged in as: <%= @_current_user %></h3>
+	<h3>You are logged in as: <%= session[:current_user]["name"] %></h3>
 	<div id="groups-container">
 		<%= render @groups %>
 		
