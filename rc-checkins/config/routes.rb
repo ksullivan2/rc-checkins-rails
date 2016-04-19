@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   post 'login' => 'logins#create' 
 
+  post 'groups/update_recursers' => "groups#update_recursers"
+  get 'recusers/create_from_group' => "recursers#create_from_group"
+
   resources :groups do
     resources :recursers
   end

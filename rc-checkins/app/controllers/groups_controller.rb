@@ -42,6 +42,15 @@ class GroupsController < ApplicationController
 		redirect_to "/"
 	end
 
+	def update_recursers
+		@new_group_id = params[:group_id]
+		@current_group_id = params[:recurser][:current_group]
+
+		#if @current_group.nil?
+			redirect_to controller: 'recursers', action: 'create_from_group', group_id: @new_group_id, recurser: params[:recurser]
+		#end
+
+	end
 
 
 	private
