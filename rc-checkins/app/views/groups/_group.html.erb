@@ -26,22 +26,9 @@
 <% end %>
 
 
-<h2>Join this group</h2>
-<%= form_for([group, group.recursers.build]) do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_area :email %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-	
-
+<%= button_to 'Join Group', {:controller => 'recursers', :action => 'create', :group_id => group.id,
+									:recurser => {:name => @_current_user, :email => @_current_user}},
+									:method => :post %>
 
 
 <!--
