@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'groups/index'
- 
+ root 'groups#index'
+
+ get 'login' => 'logins#show'
+
+
   resources :groups do
     resources :recursers
   end
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'groups#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

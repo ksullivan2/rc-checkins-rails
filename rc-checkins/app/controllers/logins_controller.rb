@@ -3,4 +3,7 @@ class LoginsController < ApplicationController
 		session[:current_user_id] = user.current_user_id
 		redirect_to "/"
 	end
+
+	def show
+	end
 end
