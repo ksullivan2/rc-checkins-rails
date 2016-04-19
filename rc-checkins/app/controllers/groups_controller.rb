@@ -1,11 +1,18 @@
 class GroupsController < ApplicationController
 	def index
-		@groups = Group.all
+		if !session[:current_user_id].nil?
+			@groups = Group.all
+		else
+			redirect_to '/login'
+		end
+
+		# @groups = Group.all
 	end
 
 	def new
 		@group = Group.new
 	end
+
 
 	def create
 		@group = Group.new(group_params)

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
  root 'groups#index'
+ 
 
- get 'login' => 'logins#show'
+ get 'login' => 'logins#new'
 
+  post 'login' => 'logins#create' 
 
   resources :groups do
     resources :recursers
