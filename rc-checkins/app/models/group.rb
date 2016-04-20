@@ -1,3 +1,3 @@
 class Group < ActiveRecord::Base
-  has_many :recursers
+  has_many :recursers, inverse_of: :group
 end

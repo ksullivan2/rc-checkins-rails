@@ -26,9 +26,7 @@
 <% end %>
 
 
-<%= button_to 'Join Group', {:controller => 'groups', :action => 'update_recursers', :group_id => group.id,
-									:recurser => {:name => session[:current_user]["name"], :email => "testEmail", :current_group => 6}},
-									:method => :post %>
+<%= button_to 'Join Group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, :method => :patch %>
 
 
 <!--

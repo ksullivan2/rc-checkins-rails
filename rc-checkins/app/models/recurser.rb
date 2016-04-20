@@ -1,5 +1,5 @@
 class Recurser < ActiveRecord::Base
-	belongs_to :group
+	has_one :group, inverse_of: :recursers
 
 	validates :name, presence: true
 	validates :email, presence: true

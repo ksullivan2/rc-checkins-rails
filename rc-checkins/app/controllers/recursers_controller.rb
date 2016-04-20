@@ -3,22 +3,33 @@ class RecursersController < ApplicationController
 		@recurser = Recurser.new
 	end
 
-	
+	def create
+		@recurser = Recurser.new(recurser_params)
+		
+		if @recurser.save
+			#add the new id to the hash
+			@tempRC = params[:recurser]
+			@tempRC[:id] = @recurser.id
+
+			#save in session cookie
+			session[:current_user] = @tempRC
+			redirect_to "/"
+		else
+			render 'new'
+		end
+	end
 
 
-	def create_from_group
-		@group = Group.find(params[:group_id])
-
-		@recurser = @group.recursers.create(recurser_params)
-		puts "CREATED RECURSER " 
+	def update
+		@recurser = Recurser.find(params[:id])
+		@recurser.update({:group_id => params[:group_id]})
 		redirect_to "/"
 	end
 
 
 
 	def destroy
-    @group = Group.find(params[:group_id])
-    @recurser = @group.recursers.find(params[:id])
+		@recurser = Recurser.find(params[:id])
     @recurser.destroy
     redirect_to "/"
   end
