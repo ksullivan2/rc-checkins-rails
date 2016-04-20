@@ -8,3 +8,17 @@ My goal with this project is to create an automated system that allows you to si
 A reach goal is an email address that you could email to notify other members of your check-in group if you're running late, which would then forward the email or direct message the other members of your group, and no one else.
 
 I originally began this project using NodeJS and React, but decided that I wanted to learn Rails, so I re-started it.
+
+##Current State
+This project is not feature-complete.
+
+To view:
+1. Fork the project and save locally.
+2. Run bin/rake db:migrate to create the ActiveRecord database
+3. Go to `localhost:3000`
+4. "Log in" by filling out the form. (will be replaced by Oauth)
+5. Add a few groups to your database by going to `localhost:3000/groups/new`
+6. Click "join group" to add your user to a group, which will remove it from any previous groups.
+
+That's it for now!
+
