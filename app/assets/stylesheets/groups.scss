@@ -2,19 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#header-container{
+	display: flex;
+	justify-content: center;
+}
+
+#titles-container{
+	margin-top: 1em;
+	display: inline;
+}
+
+.titles{
+	font-family: 'Press Start 2P', sans-serif;
+	text-align: center;
+}
+
+.rc-logo{
+	margin: 2em;
+}
+
+
 #groups-container{
 	display:flex;
 	flex-flow: row;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .group{
 	display: flex;
   flex-flow: column;
-  border: 1px solid black;
+  border-bottom: 5px solid #8AFB17;
   padding: 1em;
+  margin: 1em;
+  position: relative;
 }
+
+/*.group p strong{
+	font-family: 'Press Start 2P', sans-serif;
+}*/
 
 .group p{
 	margin: 0;
+	font-family: 'Source Code Pro', sans-serif ;
+}
+
+.group__topic-change{
+	font-family: 'Source Code Pro', sans-serif ;
+}
+
+.group__topic-change input{
+	font-family: 'Source Code Pro', sans-serif ;
+}
+
+.group__join-group-button{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-family: 'Press Start 2P', sans-serif;
+	-webkit-appearance: none;
+	font-size: .5em;
+
+}
+
+
+.recurser{
+	color: green;
 }

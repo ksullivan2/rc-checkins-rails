@@ -1,9 +1,16 @@
 
 <!--RoomList = ["Djikstra", "Von Neumann", "McCarthy", "Turing", "Lovelace", "Church", "Babbage", "Hopper", "Library"] -->
+<link href='https://fonts.googleapis.com/css?family=Press+Start+2P|Source+Code+Pro:400,700' rel='stylesheet' type='text/css'>
 
 <div id="main-container">
-	<h1>Sign up for Check-Ins</h1>
-	<h3>You are logged in as: <%= session[:current_user]["name"] %></h3>
+	<div id="header-container">
+		<img class="rc-logo" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png" />
+		<div id="titles-container">
+			<h1 class='titles'>Sign up for Check-Ins</h1>
+			<h3 class='titles'>You are logged in as: <%= session[:current_user]["name"] %></h3>
+		</div>
+		<img class="rc-logo" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png" />
+	</div>
 	<div id="groups-container">
 		<%= render @groups %>
 		

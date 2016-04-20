@@ -1,32 +1,25 @@
 <div class="group">
-	<p>
-		<strong>Room:</strong>
-		<%= group.room %>
-	</p>
-	<p>
-		<strong>Time:</strong>
-		<%= group.time %>
-	</p>
+	<p><%= group.room %> @ <%= group.time %></p>
+	<p>Topic: <%= group.topic %></p>
 	
 
-		<%= form_for :group, url: group_path(group), method: :patch do |g| %>
+		<%= form_for :group, url: group_path(group), 
+								:html => {:class => "group__topic-change"}, method: :patch do |f| %>
 			<p>
-		   	<%= g.label :topic %><br>
-		    <%= g.text_field :topic, :value => group.topic %>
+		    <%= f.text_field :topic %>
 		  </p>
 		  <p>
-	    	<%= g.submit %>
+	    	<%= f.submit :value => "change topic"%>
 	  	</p>
+	  <% end %>
 
 	
-	<p>
-		<strong>Recursers:</strong>
-		<%= render group.recursers %>
-	</p>
-<% end %>
+	<p>Recursers:</p>
+	<%= render group.recursers %>
 
 
-<%= button_to 'Join Group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, :method => :patch %>
+
+<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
 
 
 <!--
