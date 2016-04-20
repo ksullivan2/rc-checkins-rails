@@ -1,8 +1,11 @@
 <div class="group">
 	<p><%= group.room %> @ <%= group.time %></p>
-	<p>Topic: <%= group.topic %></p>
 	
 
+	<p>Topic: <%= group.topic if !group.edit_mode %></p>
+
+	
+	<% if !group.edit_mode %>
 		<%= form_for :group, url: group_path(group), 
 								:html => {:class => "group__topic-change"}, method: :patch do |f| %>
 			<p>
@@ -12,11 +15,12 @@
 	    	<%= f.submit :value => "change topic"%>
 	  	</p>
 	  <% end %>
+	<% end %>
 
 	
 	<p>Recursers:</p>
 	<%= render group.recursers %>
-	<p><br></p>
+	<br>
 
 
 	
