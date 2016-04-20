@@ -15,7 +15,7 @@ This project is not feature-complete.
 To view:
 
 1. Fork the project and save locally.
-2. Run bin/rake db:migrate to create the ActiveRecord database
+2. Run `bin/rake db:migrate` to create the ActiveRecord database
 3. Go to `localhost:3000`
 4. "Log in" by filling out the form. (will be replaced by Oauth)
 5. Add a few groups to your database by going to `localhost:3000/groups/new`
