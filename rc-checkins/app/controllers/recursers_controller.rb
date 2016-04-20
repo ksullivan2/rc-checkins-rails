@@ -3,7 +3,18 @@ class RecursersController < ApplicationController
 		@recurser = Recurser.new
 	end
 
-	
+	def create
+		@recurser = Recurser.new(recurser_params)
+
+		if @recurser.save
+			puts "$$$$$$$$$$$$$$$$$$$$"
+			puts params
+			session[:current_user] = {:name => params[:recurser][:name]}
+			redirect_to "/"
+		else
+			render 'new'
+		end
+	end
 
 
 	def create_from_group

@@ -2,16 +2,16 @@ Rails.application.routes.draw do
  root 'groups#index'
  
 
- get 'login' => 'logins#new'
+ get 'login' => 'recursers#new'
 
-  post 'login' => 'logins#create' 
+  post 'login' => 'recursers#create' 
 
   post 'groups/update_recursers' => "groups#update_recursers"
   get 'recusers/create_from_group' => "recursers#create_from_group"
 
-  resources :groups do
-    resources :recursers
-  end
+  resources :groups
+  resources :recursers
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

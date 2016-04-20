@@ -1,0 +1,44 @@
+<!--
+<%= form_for :recursers do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+-->
+
+<%= form_for :recurser, url: recursers_path do |r| %>
+
+	<% if @recurser.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@recurser.errors.count, "error") %> prohibited
+        this recurser from being saved:
+      </h2>
+      <ul>
+        <% @recurser.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<p>
+		<%= r.label :name %><br>
+		<%= r.text_field :name %>
+	</p>
+	<p>
+		<%= r.label :email %><br>
+		<%= r.text_field :email %>
+	</p>
+	<p>
+		<%= r.submit %>
+	</p>
+<% end %>
