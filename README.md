@@ -13,6 +13,7 @@ I originally began this project using NodeJS and React, but decided that I wante
 This project is not feature-complete.
 
 To view:
+
 1. Fork the project and save locally.
 2. Run bin/rake db:migrate to create the ActiveRecord database
 3. Go to `localhost:3000`
