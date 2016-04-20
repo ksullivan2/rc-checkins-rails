@@ -1,20 +1,7 @@
-<!--
-<%= form_for :recursers do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
--->
+
 
 <%= form_for :recurser, url: recursers_path do |r| %>
+
 
 	<% if @recurser.errors.any? %>
     <div id="error_explanation">
