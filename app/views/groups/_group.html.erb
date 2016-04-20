@@ -16,10 +16,12 @@
 	
 	<p>Recursers:</p>
 	<%= render group.recursers %>
+	<p><br></p>
 
 
-
-<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
+	
+	<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
+	
 
 
 <!--
