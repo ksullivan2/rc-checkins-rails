@@ -27,8 +27,7 @@ class GroupsController < ApplicationController
 		@group.update(group_params)
 
 		redirect_to "/"
-		#error handling here!
-
+		#error handling!
 	end
 
 	def destroy

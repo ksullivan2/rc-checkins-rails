@@ -31,29 +31,28 @@
 }
 
 .group{
-	display: flex;
-  flex-flow: column;
   border-bottom: 5px solid #8AFB17;
   padding: 1em;
   margin: 1em;
   position: relative;
+
 }
 
-/*.group p strong{
-	font-family: 'Press Start 2P', sans-serif;
-}*/
 
 .group p{
 	margin: 0;
 	font-family: 'Source Code Pro', sans-serif ;
+
 }
 
 .group__topic-change{
 	font-family: 'Source Code Pro', sans-serif ;
+	display: none;
 }
 
 .group__topic-change input{
-	font-family: 'Source Code Pro', sans-serif ;
+	font-family: 'Source Code Pro', sans-serif ;;
+	max-width: 70%;
 }
 
 

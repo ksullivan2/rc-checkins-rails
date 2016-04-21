@@ -1,23 +1,31 @@
 <div class="group">
-	<p><%= group.room %> @ <%= group.time %></p>
-	
+	<p><strong><%= group.room %> @ <%= group.time %></strong></p>
 
-	<p>Topic: <%= group.topic if !group.edit_mode %></p>
 
 	
-	<% if !group.edit_mode %>
-		<%= form_for :group, url: group_path(group), 
-								:html => {:class => "group__topic-change"}, method: :patch do |f| %>
-			<p>
-		    <%= f.text_field :topic %>
-		  </p>
-		  <p>
-	    	<%= f.submit :value => "change topic"%>
-	  	</p>
+	<div class="group__topic" id="group__topic<%=group.id%>">
+		<p>Topic: <%= group.topic %>
+			<%= image_tag("edit.png", {:class=> "group__topic__edit-button", :id => "group__topic__edit-button" + group.id.to_s}) %>
+		</p>
+	</div>
+
+	<div class="group__topic-change" id="group__topic-change<%=group.id%>">
+		
+		<%= form_for :group, url: group_path(group), method: :patch do |f| %>
+			<p><%= f.text_field :topic %>
+		  
+			  <%= image_submit_tag("save.png", {:class=> "group__topic-change__submit-button", :id=> "group__topic-change__submit-button" + group.id.to_s}) %>
+			  
+				<%= image_tag("cancel.png", {:class=> "group__topic-change__cancel-button", :id => "group__topic-change__edit-button" + group.id.to_s}) %>
+			</p>
+			
+		  
 	  <% end %>
-	<% end %>
+		
+	</div>
 
 	
+	<br>
 	<p>Recursers:</p>
 	<%= render group.recursers %>
 	<br>
