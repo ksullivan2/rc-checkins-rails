@@ -4,13 +4,14 @@
 
 <div id="main-container">
 	<div id="header-container">
-		<img class="rc-logo" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png" />
+		<%= image_tag("rclogo.png", :class => "rc-logo") %>
 		<div id="titles-container">
 			<h1 class='titles'>Sign up for Check-Ins</h1>
 			<h3 class='titles'>You are logged in as: <%= session[:current_user]["name"] %></h3>
 		</div>
-		<img class="rc-logo" src="https://d29xw0ra2h4o4u.cloudfront.net/assets/logo-no-text-ab02ba4e6d854337f7d7515e08f57520a82883ace40d22b4de689435cc211ffd.png" />
+		<%= image_tag("rclogo.png", :class => "rc-logo") %>
 	</div>
+	
 	<div id="groups-container">
 		<%= render @groups %>
 		
