@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   post 'login' => 'recursers#create' 
 
-  post 'groups/update_recursers' => "groups#update_recursers"
-  get 'recusers/create_from_group' => "recursers#create_from_group"
+  
+  
 
   resources :groups
   resources :recursers

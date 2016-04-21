@@ -46,14 +46,17 @@
 .group p{
 	margin: 0;
 	font-family: 'Source Code Pro', sans-serif ;
+
 }
 
 .group__topic-change{
 	font-family: 'Source Code Pro', sans-serif ;
+	display: none;
 }
 
 .group__topic-change input{
-	font-family: 'Source Code Pro', sans-serif ;
+	font-family: 'Source Code Pro', sans-serif ;;
+	max-width: 70%
 }
 
 
