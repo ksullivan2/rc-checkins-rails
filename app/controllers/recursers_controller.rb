@@ -4,18 +4,25 @@ class RecursersController < ApplicationController
 	end
 
 	def create
-		@recurser = Recurser.new(recurser_params)
-		
-		if @recurser.save
-			#add the new id to the hash
-			@tempRC = params[:recurser]
-			@tempRC[:id] = @recurser.id
-
-			#save in session cookie
-			session[:current_user] = @tempRC
+		@recurser = Recurser.find_by email: recurser_params[:email]
+		if @recurser
+			session[:current_user] = @recurser
 			redirect_to "/"
+
 		else
-			render 'new'
+			@recurser = Recurser.new(recurser_params)
+		
+			if @recurser.save
+				#add the new id to the hash
+				@tempRC = params[:recurser]
+				@tempRC[:id] = @recurser.id
+
+				#save in session cookie
+				session[:current_user] = @tempRC
+				redirect_to "/"
+			else
+				render 'new'
+			end
 		end
 	end
 
