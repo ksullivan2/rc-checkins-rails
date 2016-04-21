@@ -11,16 +11,16 @@
 
 	<div class="group__topic-change" id="group__topic-change<%=group.id%>">
 		
-			<%= form_for :group, url: group_path(group), method: :patch do |f| %>
-				<p><%= f.text_field :topic %>
+		<%= form_for :group, url: group_path(group), method: :patch do |f| %>
+			<p><%= f.text_field :topic %>
+		  
+			  <%= image_submit_tag("save.png", {:class=> "group__topic-change__submit-button", :id=> "group__topic-change__submit-button" + group.id.to_s}) %>
 			  
-				  <%= image_submit_tag("save.png", {:class=> "group__topic-change__submit-button", :id=> "group__topic-change__submit-button" + group.id.to_s}) %>
-				  
-					<%= image_tag("cancel.png", {:class=> "group__topic-change__cancel-button", :id => "group__topic-change__edit-button" + group.id.to_s}) %>
-				</p>
-				
-			  
-		  <% end %>
+				<%= image_tag("cancel.png", {:class=> "group__topic-change__cancel-button", :id => "group__topic-change__edit-button" + group.id.to_s}) %>
+			</p>
+			
+		  
+	  <% end %>
 		
 	</div>
 

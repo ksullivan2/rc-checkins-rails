@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160414205858) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "groups", force: :cascade do |t|
     t.string   "room"
     t.string   "time"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160414205858) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "groups", ["recursers_id"], name: "index_groups_on_recursers_id"
+  add_index "groups", ["recursers_id"], name: "index_groups_on_recursers_id", using: :btree
 
   create_table "recursers", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +35,6 @@ ActiveRecord::Schema.define(version: 20160414205858) do
     t.integer  "group_id"
   end
 
-  add_index "recursers", ["group_id"], name: "index_recursers_on_group_id"
+  add_index "recursers", ["group_id"], name: "index_recursers_on_group_id", using: :btree
 
 end
