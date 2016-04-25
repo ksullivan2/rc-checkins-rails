@@ -24,8 +24,12 @@ class AuthController < ApplicationController
   def callback
   	code = params[:code]
   	token = @@client.auth_code.get_token(code, redirect_uri: @@redirect_uri)
-  	puts "TOKEN $$$$$$$$$$$$$$$$"
-  	puts token
-  	redirect_to "/"
+  	session["token"] = token
+  	@user = JSON.parse(token.get("/api/v1/people/me").body)
+
+  	
+  	redirect_to recursers_path(recurser: {:name => @user["first_name"] + @user["last_name"], :email => @user["email"]})
   end
+
+  
 end
