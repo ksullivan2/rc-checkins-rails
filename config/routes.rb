@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   post 'login' => 'recursers#create' 
 
-  post 'recursers/auth' => 'recursers#auth'
+  post 'auth/start' => 'auth#start'
+  get 'auth/callback' => 'auth#callback'
 
   
   
