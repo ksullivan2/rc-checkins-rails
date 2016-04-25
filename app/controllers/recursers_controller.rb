@@ -16,7 +16,7 @@ class RecursersController < ApplicationController
   	@user = JSON.parse(token.get("/api/v1/people/me").body)
 
   	
-  	@authed_user = {:name => @user["first_name"] + @user["last_name"], :email => @user["email"]}
+  	@authed_user = {:name => @user["first_name"] + " " +  @user["last_name"], :email => @user["email"]}
   	create(@authed_user)
   end
 
