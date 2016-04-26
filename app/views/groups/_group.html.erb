@@ -1,4 +1,5 @@
-<div class="group">
+
+<div class="group<%=" group-afternoon" if group.time=="1:00 PM"%>" >
 	<p><strong><%= group.room %> @ <%= group.time %></strong></p>
 
 
@@ -35,13 +36,5 @@
 	<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
 	
 
-
-<!--
-	<p>
-  <%= link_to 'Destroy Group', [group],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-	</p>
--->
 
 </div>
