@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 	def index
 		if !session[:current_user].nil?
-			@groups = Group.order(:time, :room)
+			@groups = Group.order("time ASC, room")
 		else
 			redirect_to '/login'
 		end
