@@ -10,6 +10,8 @@
 			<h3 class='titles'>You are logged in as: <%= session[:current_user]["name"] %></h3>
 		</div>
 		<%= image_tag("rclogo.png", :class => "rc-logo") %>
+		
+		<%= link_to image_tag("settings.png", :class => "settings-icon"), {:controller => 'recursers', :action => 'edit', :id => session[:current_user]["id"]} %>
 	</div>
 	
 	<div id="groups-container">

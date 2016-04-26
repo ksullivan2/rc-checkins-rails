@@ -36,11 +36,7 @@ class RecursersController < ApplicationController
 			@recurser = Recurser.new(user)
 		
 			if @recurser.save
-				#add the new id to the hash
-				user[:id] = @recurser.id
-
-				# #save in session cookie
-				session[:current_user] = user
+				session[:current_user] = @recurser
 				redirect_to "/"
 			else
 				render 'new'
@@ -48,11 +44,22 @@ class RecursersController < ApplicationController
 		end
 	end
 
+	def edit
+		@recurser = Recurser.find(params[:id])
+	end
 
 	def update
 		@recurser = Recurser.find(params[:id])
-		@recurser.update({:group_id => params[:group_id]})
-		redirect_to "/"
+		#group_id is a different edit case, it's not passed in as part of recurser_params
+		if params[:group_id]
+			@recurser.update({:group_id => params[:group_id]})
+			redirect_to "/"
+		elsif @recurser.update(recurser_params)
+			session[:current_user] = @recurser
+			redirect_to "/"
+		else
+			render "edit"
+		end
 	end
 
 
@@ -64,11 +71,8 @@ class RecursersController < ApplicationController
   end
 
 
-
-
-
 	private
 		def recurser_params
-			params.require(:recurser).permit(:name, :email, :group_id)
+			params.require(:recurser).permit(:name, :email, :group_id, :zulip_email)
 		end
 end

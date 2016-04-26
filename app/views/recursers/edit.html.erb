@@ -1,0 +1,29 @@
+<%= form_for :recurser, url: {action: "update"}, method: "patch" do |r| %>
+
+
+	<% if @recurser.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@recurser.errors.count, "error") %> prohibited
+        your account from being updated:
+      </h2>
+      <ul>
+        <% @recurser.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<p>
+		<%= r.label "Display Name" %><br>
+		<%= r.text_field :name %>
+	</p>
+	<p>
+		<%= r.label "Zulip email (if different)" %><br>
+		<%= r.text_field :zulip_email %>
+	</p>
+	<p>
+		<%= r.submit :value => "Update My Information" %>
+	</p>
+<% end %>
