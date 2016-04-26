@@ -1,7 +1,7 @@
 class RecursersController < ApplicationController
-	@@client_id     = ENV["RC_TESTING_ID"]
-	@@client_secret = ENV["RC_TESTING_SECRET"]
-	@@redirect_uri  = 'urn:ietf:wg:oauth:2.0:oob' # your client's redirect uri
+	@@client_id     = ENV['RC_CHECKINS_ID'] || ENV["RC_TESTING_ID"]
+	@@client_secret = ENV['RC_CHECKINS_SECRET'] || ENV["RC_TESTING_SECRET"]
+	@@redirect_uri  = ENV['RC_CHECKINS_URI'] || ENV["RC_TESTING_URI"]
 	@@site          = 'https://www.recurse.com'
 	@@client = OAuth2::Client.new(@@client_id, @@client_secret, site: @@site)
 

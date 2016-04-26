@@ -2,9 +2,7 @@ Rails.application.routes.draw do
  root 'groups#index'
  
 
-  get 'login' => 'recursers#new'
-
-  post 'login' => 'recursers#create' 
+  get 'login' => 'recursers#start_auth'
 
   post 'auth/start' => 'recursers#start_auth'
   get 'auth/callback' => 'recursers#auth_callback'
