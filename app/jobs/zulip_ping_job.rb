@@ -4,9 +4,14 @@ class ZulipPingJob < ActiveJob::Base
   @@uri = URI("https://api.zulip.com/v1/messages")
  
   def perform(recurser)
-    res = zulip_post('type' => 'private', 'content' => 'test', 
-    	'to' => recurser['zulip_email'])
-    puts res.body
+  	if recurser.group_id
+  		group = Group.find(recurser.group_id)
+  		content = "You are in #{group.room} at #{group.time}."
+
+	    res = zulip_post('type' => 'private', 'content' => content, 
+	    	'to' => recurser['zulip_email'])
+	    puts res.body
+	  end
   end
 
   private

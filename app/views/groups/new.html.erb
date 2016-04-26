@@ -20,12 +20,9 @@
 		<%= g.label :room %><br>
 		<%= g.text_field :room %>
 	</p>
+
 	<p>
-		<%= g.label :time %><br>
-		<%= g.radio_button(:time, "10:30 AM") %>
-		<%= g.label(:time_morning, "10:30 AM") %>
-		<%= g.radio_button(:time, "1:00 PM") %>
-		<%= g.label(:time_afternoon, "1:00 PM") %>
+		<%= g.collection_select(:available_time_id, AvailableTime.all, :id, :time) %>
 	</p>
 	<p>
 		<%= g.label :topic %><br>

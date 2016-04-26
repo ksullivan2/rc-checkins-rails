@@ -11,20 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426154623) do
+ActiveRecord::Schema.define(version: 20160426232756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "groups", force: :cascade do |t|
-    t.string   "room"
+  create_table "available_times", force: :cascade do |t|
+    t.string   "alias"
     t.string   "time"
-    t.integer  "recursers_id"
-    t.string   "topic"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "room"
+    t.integer  "recursers_id"
+    t.string   "topic"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "available_time_id"
+  end
+
+  add_index "groups", ["available_time_id"], name: "index_groups_on_available_time_id", using: :btree
   add_index "groups", ["recursers_id"], name: "index_groups_on_recursers_id", using: :btree
 
   create_table "recursers", force: :cascade do |t|
@@ -38,4 +46,5 @@ ActiveRecord::Schema.define(version: 20160426154623) do
 
   add_index "recursers", ["group_id"], name: "index_recursers_on_group_id", using: :btree
 
+  add_foreign_key "groups", "available_times"
 end

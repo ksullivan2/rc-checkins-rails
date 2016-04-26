@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 	def index
 		if !session[:current_user].nil?
-			@groups = Group.order("time DESC, room ASC")
+			@groups = Group.order("available_time_id DESC, room ASC")
 			# @groups = Group.all
 		else
 			redirect_to '/login'
@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
 	def new
 		@group = Group.new
+		@available_times = AvailableTime.all
 	end
 
 
@@ -40,6 +41,6 @@ class GroupsController < ApplicationController
 
 	private
 		def group_params
-			params.require(:group).permit(:room, :time, :topic)
+			params.require(:group).permit(:room, :time, :topic, :available_time_id)
 		end
 end
