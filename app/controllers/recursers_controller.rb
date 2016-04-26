@@ -16,7 +16,7 @@ class RecursersController < ApplicationController
   	@user = JSON.parse(token.get("/api/v1/people/me").body)
 
   	
-  	@authed_user = {:name => @user["first_name"] + " " +  @user["last_name"], :email => @user["email"]}
+  	@authed_user = {:name => @user["first_name"] + " " +  @user["last_name"], :email => @user["email"], :zulip_email => @user["email"]}
   	create(@authed_user)
   end
 
@@ -34,13 +34,13 @@ class RecursersController < ApplicationController
 
 		else
 			@recurser = Recurser.new(user)
-		
 			if @recurser.save
 				session[:current_user] = @recurser
 				redirect_to "/"
 			else
 				render 'new'
 			end
+
 		end
 	end
 
