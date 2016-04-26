@@ -1,5 +1,6 @@
 class RecursersController < ApplicationController
-	@@client_id     = ENV['RC_CHECKINS_ID'] || ENV["RC_TESTING_ID"]
+	# @@client_id     = ENV['RC_CHECKINS_ID'] || ENV["RC_TESTING_ID"]
+	@@client_id = Rails.application.secrets.RC_TESTING_API_ID
 	@@client_secret = ENV['RC_CHECKINS_SECRET'] || ENV["RC_TESTING_SECRET"]
 	@@redirect_uri  = ENV['RC_CHECKINS_URI'] || ENV["RC_TESTING_URI"]
 	@@site          = 'https://www.recurse.com'
