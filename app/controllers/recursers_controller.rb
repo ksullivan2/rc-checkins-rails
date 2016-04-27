@@ -1,8 +1,7 @@
 class RecursersController < ApplicationController
-	# @@client_id     = ENV['RC_CHECKINS_ID'] || ENV["RC_TESTING_ID"]
-	@@client_id = Rails.application.secrets.RC_TESTING_API_ID
-	@@client_secret = ENV['RC_CHECKINS_SECRET'] || ENV["RC_TESTING_SECRET"]
-	@@redirect_uri  = ENV['RC_CHECKINS_URI'] || ENV["RC_TESTING_URI"]
+	@@client_id = Rails.application.secrets.RC_API_ID
+	@@client_secret = Rails.application.secrets.RC_API_SECRET
+	@@redirect_uri  = Rails.application.secrets.RC_API_URI
 	@@site          = 'https://www.recurse.com'
 	@@client = OAuth2::Client.new(@@client_id, @@client_secret, site: @@site)
 
