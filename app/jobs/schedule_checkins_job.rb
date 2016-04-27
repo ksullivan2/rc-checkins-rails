@@ -14,6 +14,8 @@ class ScheduleCheckinsJob < ActiveJob::Base
     if weekday <= 4
     	thisweek = true
     	start = weekday
+
+    	#TO-DO: add a check so you don't get pinged if the time today has already passed
     else
     	thisweek = false
     	start = 1
@@ -31,7 +33,7 @@ class ScheduleCheckinsJob < ActiveJob::Base
     	dailypingtime = pingtime + (86400 * (w-start))
 
     	#schedule a ping
-    	ZulipPingJob.delay(queue: recurser.name, run_at: dailypingtime).perform_later(dailypingtime.to_s)
+    	ZulipPingJob.delay(queue: recurser.name, run_at: dailypingtime).perform_later(recurser.zulip_email, group.room)
     end
 
   end
