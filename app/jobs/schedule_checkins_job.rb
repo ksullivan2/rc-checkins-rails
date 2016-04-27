@@ -3,6 +3,8 @@ class ScheduleCheckinsJob < ActiveJob::Base
 
   def perform(*args)
     recursers = Recurser.all
+    isThursday = Time.zone.now.thursday?
+    weekday = Time.zone.now.wday.to_s
 
     recursers.each do |rcer|
     	group = Group.find(rcer.group_id)

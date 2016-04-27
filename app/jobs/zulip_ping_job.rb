@@ -8,7 +8,8 @@ class ZulipPingJob < ActiveJob::Base
   		group = Group.find(recurser.group_id)
   		# content = "You are in #{group.room} at #{group.time}."
   		content = Time.zone.now
-  		#content = "FROM NOW " + 2.seconds.from_now.class.to_s
+
+  		
 
 	    res = zulip_post('type' => 'private', 'content' => content, 
 	    	'to' => recurser['zulip_email'])
