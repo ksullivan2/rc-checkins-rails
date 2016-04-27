@@ -3,12 +3,13 @@ class ScheduleCheckinsJob < ActiveJob::Base
 
   def perform(*args)
     recursers = Recurser.all
-    date = Time.zone.local(2016,4,27,12,26)
 
     recursers.each do |rcer|
+    	group = Group.find(rcer.group_id)
+    	pingtime = Time.parse(group.time)
 
     	
-    	ZulipPingJob.delay(run_at: date).perform_later(rcer)
+    	ZulipPingJob.delay(run_at: pingtime).perform_later(rcer)
     end
   end
 end
