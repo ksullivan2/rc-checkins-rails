@@ -53,8 +53,7 @@ class RecursersController < ApplicationController
 		#group_id is a different edit case, it's not passed in as part of recurser_params
 		if params[:group_id]
 			@recurser.update({:group_id => params[:group_id]})
-
-			
+			ScheduleCheckinsJob.perform_now(@recurser)
 			redirect_to "/"
 		elsif @recurser.update(recurser_params)
 			session[:current_user] = @recurser
