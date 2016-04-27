@@ -5,7 +5,8 @@ class ScheduleCheckinsJob < ActiveJob::Base
     recursers = Recurser.all
 
     recursers.each do |rcer|
-    	ZulipPingJob.delay(run_at: 5.seconds.from_now).perform_now(rcer)
+    	
+    	ZulipPingJob.delay(run_at: 5.minutes.from_now).perform_later(rcer)
     end
   end
 end

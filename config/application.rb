@@ -25,5 +25,9 @@ module RcCheckins
 
     # Use delayed_job for background tasks
     config.active_job.queue_adapter = :delayed_job
+
+    #time zone fix
+    config.time_zone = 'Eastern Time (US & Canada)'
+    #config.active_record.default_timezone = :local
   end
 end
