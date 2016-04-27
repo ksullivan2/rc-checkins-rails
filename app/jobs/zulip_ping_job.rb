@@ -15,8 +15,7 @@ class ZulipPingJob < ActiveJob::Base
 	 #  end
   # end
 
-  def perform(email, room)
-  	content = "Your check-in starts now in #{room}"
+  def perform(email, content)
   	zulip_post('type' => 'private', 'content' => content, 'to' => email)
 	end
 
