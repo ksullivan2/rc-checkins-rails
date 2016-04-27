@@ -8,11 +8,6 @@ class ScheduleCheckinsJob < ActiveJob::Base
   	# Time.parse will default to TODAY
     group = Group.find(recurser.group_id)
     pingtime = Time.parse(group.time)
-
-
-    	
-    # a check so you don't get pinged if the time today has already passed
-   	#start += 1 if Time.zone.now >= pingtime
     
     
     # checks if we're scheduling jobs for this week or next week
