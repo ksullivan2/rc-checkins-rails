@@ -4,7 +4,8 @@
 
 $(function(){
 	$(".group__topic__edit-button").click(function(){
-		var id = this.id[this.id.length-1]
+		var id = get_id("group__topic__edit-button", this.id)
+		console.log("edit clicked" + id)
 		var topicID = "#group__topic" + id
 		var topicChangeID = "#group__topic-change" + id
 
@@ -13,7 +14,8 @@ $(function(){
 	})
 
 	$(".group__topic-change__cancel-button").click(function(){
-		var id = this.id[this.id.length-1]
+		var id = get_id("group__topic-change__cancel-button", this.id)
+		console.log("cancel clicked" + id)
 		var topicID = "#group__topic" + id
 		var topicChangeID = "#group__topic-change" + id
 
@@ -21,4 +23,8 @@ $(function(){
 		$(topicChangeID).hide()
 	})
 })
+
+function get_id(partial, full){
+	return full.substring(partial.length)
+}
 
