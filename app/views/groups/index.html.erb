@@ -21,8 +21,9 @@
 	
 	<div id="groups-container">
 		<%= render @groups %>
-		
 	</div>
+
+	<%= button_to 'leave groups', {:controller => 'recursers', :action => 'leave_group', :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
 
 
 </div>

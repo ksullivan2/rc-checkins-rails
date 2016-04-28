@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'auth/start' => 'recursers#start_auth'
   get 'auth/callback' => 'recursers#auth_callback'
 
+  patch 'recursers/:id/leave_group' => "recursers#leave_group"
+
   
   
 

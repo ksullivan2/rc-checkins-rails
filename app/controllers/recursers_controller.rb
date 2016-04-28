@@ -55,6 +55,7 @@ class RecursersController < ApplicationController
 			@recurser.update({:group_id => params[:group_id]})
 			ConfirmationJob.perform_now(@recurser)
 			ScheduleCheckinsJob.perform_now(@recurser)
+			session[:current_user] = @recurser
 			redirect_to "/"
 		elsif @recurser.update(recurser_params)
 			session[:current_user] = @recurser
@@ -64,6 +65,12 @@ class RecursersController < ApplicationController
 		end
 	end
 
+	def leave_group
+		@recurser = Recurser.find(params[:id])
+		@recurser.update({:group_id => nil})
+		session[:current_user] = @recurser
+		redirect_to "/"
+	end
 
 
 	def destroy
