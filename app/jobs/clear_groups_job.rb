@@ -6,6 +6,6 @@ class ClearGroupsJob < ActiveJob::Base
     recursers.each do |rcer|
     	rcer.update({:group_id => nil})
     end
-    ClearGroupsJob.delay(run_at: 7.days.from_now).perform_later
+    ClearGroupsJob.delay(run_at: Time.now.midnight + (86400*7)).perform_later
   end
 end
