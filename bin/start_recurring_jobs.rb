@@ -11,6 +11,6 @@ job_time =  Time.now.midnight + (86400*days_til_Friday)
 
 jobs = Delayed::Job.where(queue: "clear_groups")
 
-if jobs.length = 0:
+if jobs.length == 0:
 	ClearGroupsJob.delay(queue: "clear_groups", run_at: job_time).perform_later
 end
