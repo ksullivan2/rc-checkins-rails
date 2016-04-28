@@ -2,7 +2,7 @@ class ScheduleCheckinsJob < ActiveJob::Base
   queue_as :default
 
   def perform(recurser)
-  	remove_existing_jobs(recurser.email)
+  	RemoveExistingPingsJob.perform_now(recurser)
 
   	# find the correct time of day to ping
   	# Time.parse will default to TODAY
@@ -41,12 +41,5 @@ class ScheduleCheckinsJob < ActiveJob::Base
     end
   end
 
-  private
-  	def remove_existing_jobs(queue)
-  		jobs = Delayed::Job.where(queue: queue)
-  		jobs.each do |job|
-  			Delayed::Job.find(job.id).destroy
-  		end
-  	end
 
 end

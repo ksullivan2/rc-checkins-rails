@@ -68,6 +68,7 @@ class RecursersController < ApplicationController
 	def leave_group
 		@recurser = Recurser.find(params[:id])
 		@recurser.update({:group_id => nil})
+		RemoveExistingPingsJob.perform_now(@recurser)
 		session[:current_user] = @recurser
 		redirect_to "/"
 	end
