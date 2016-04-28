@@ -115,3 +115,19 @@
 .recurser{
 	color: green;
 }
+
+.thursday-warning{
+	display: none;
+	width: 50%;
+	background: #404040;
+  color: #fff;
+  font-family: 'Source Code Pro', sans-serif ;
+  padding: 1em;
+  border-radius: .5em;
+  text-align: center;
+  margin: auto;
+}
+
+.thursday-warning-visible{
+	display: block;
+}

@@ -16,10 +16,13 @@
 		<div class="settings__tooltip<%=" settings__tooltip-visible" if !session[:current_user]["group_id"]%>">If your Zulip email is different than what's in the RC database, change it here before signing up for check-ins!</div>
 	
 	</div>
+	<div class="thursday-warning<%=" thursday-warning-visible" if Time.zone.now.thursday?%>">Come back tomorrow to sign up for next week's check-ins!
+	</div>
 	
 	<div id="groups-container">
 		<%= render @groups %>
 		
 	</div>
+
 
 </div>
