@@ -69,6 +69,7 @@ class RecursersController < ApplicationController
 		@recurser = Recurser.find(params[:id])
 		@recurser.update({:group_id => nil})
 		RemoveExistingPingsJob.perform_now(@recurser)
+		ConfirmationJob.perform_now(@recurser)
 		session[:current_user] = @recurser
 		redirect_to "/"
 	end
