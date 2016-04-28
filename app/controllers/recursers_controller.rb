@@ -29,13 +29,13 @@ class RecursersController < ApplicationController
 		@recurser = Recurser.find_by email: user[:email]
 		
 		if @recurser
-			session[:current_user] = @recurser
+			update_session_user(@recurser)
 			redirect_to "/"
 
 		else
 			@recurser = Recurser.new(user)
 			if @recurser.save
-				session[:current_user] = @recurser
+				update_session_user(@recurser)
 				redirect_to "/"
 			else
 				render 'new'
@@ -45,7 +45,12 @@ class RecursersController < ApplicationController
 	end
 
 	def edit
-		@recurser = Recurser.find(params[:id])
+		@recurser = Recurser.find(session[:current_user]["id"])
+		if session[:current_user]["id"].to_s == params[:id]
+			@valid_id = true
+		else
+			@valid_id = false
+		end
 	end
 
 	def update
@@ -55,10 +60,10 @@ class RecursersController < ApplicationController
 			@recurser.update({:group_id => params[:group_id]})
 			ConfirmationJob.perform_now(@recurser)
 			ScheduleCheckinsJob.perform_now(@recurser)
-			session[:current_user] = @recurser
+			update_session_user(@recurser)
 			redirect_to "/"
 		elsif @recurser.update(recurser_params)
-			session[:current_user] = @recurser
+			update_session_user(@recurser)
 			redirect_to "/"
 		else
 			render "edit"
@@ -70,7 +75,7 @@ class RecursersController < ApplicationController
 		@recurser.update({:group_id => nil})
 		RemoveExistingPingsJob.perform_now(@recurser)
 		ConfirmationJob.perform_now(@recurser)
-		session[:current_user] = @recurser
+		update_session_user(@recurser)
 		redirect_to "/"
 	end
 
@@ -85,5 +90,9 @@ class RecursersController < ApplicationController
 	private
 		def recurser_params
 			params.require(:recurser).permit(:name, :email, :group_id, :zulip_email)
+		end
+
+		def update_session_user(recurser)
+			session[:current_user]= recurser
 		end
 end

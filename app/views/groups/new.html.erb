@@ -1,5 +1,7 @@
 
 
+<link href='https://fonts.googleapis.com/css?family=Press+Start+2P|Source+Code+Pro:400,700' rel='stylesheet' type='text/css'>
+
 <%= form_for :group, url: groups_path do |g| %>
 
 	<% if @group.errors.any? %>
@@ -16,19 +18,21 @@
     </div>
   <% end %>
 
-	<p>
-		<%= g.label :room %><br>
-		<%= g.text_field :room %>
-	</p>
+	
+		<h2 class="form_header"><%= g.label :room %></h2>
+		<%= g.text_field :room, :class => "form_input" %>
+	
 
-	<p>
-		<%= g.collection_select(:available_time_id, AvailableTime.all, :id, :time) %>
-	</p>
-	<p>
-		<%= g.label :topic %><br>
-		<%= g.text_field :topic %>
-	</p>
-	<p>
-		<%= g.submit %>
-	</p>
+	<h2 class="form_header">Time (select):</h2>
+		<%= g.collection_select(:available_time_id, AvailableTime.all, :id, :time, {}, 
+		html_options = {:class => "form_element"}) %>
+	
+	<h2 class="form_header">
+		<%= g.label :topic %></h2>
+		<%= g.text_field :topic, :class => "form_input" %>
+		<br><br>
+	
+	
+		<%= g.submit :class => "form_element" %>
+	
 <% end %>
