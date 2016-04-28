@@ -24,10 +24,41 @@
 
 .settings-icon{
 	position: absolute;
-	right: 1em;
+	right: 2em;
 	top: 1em;
 	width: 32px;
 	color: grey;
+}
+
+.settings__tooltip{
+	display: none;
+	width: 10em;
+	position: absolute;
+	top: 4em;
+	right: 1em;
+	background: #404040;
+  color: #fff;
+  font-family: 'Source Code Pro', sans-serif ;
+  padding: 1em;
+  border-radius: .5em;
+}
+
+.settings__tooltip:before{
+	content: "";
+  border: solid 1em transparent; 
+  border-bottom-color: #404040; 
+  border-top: 0; 
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  top: -2em; 
+  margin-left: 8em;
+}
+
+.settings__tooltip-visible{
+	display: block;
 }
 
 
