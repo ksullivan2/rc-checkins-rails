@@ -1,0 +1,1 @@
+ZulipPingJob.delay(run_at: 1.minute.from_now).perform_later("kaley.sullivan@gmail.com", "testing startup in heroku")
