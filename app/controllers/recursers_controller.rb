@@ -1,23 +1,23 @@
 class RecursersController < ApplicationController
-	@@client_id = Rails.application.secrets.RC_API_ID
-	@@client_secret = Rails.application.secrets.RC_API_SECRET
-	@@redirect_uri  = Rails.application.secrets.RC_API_URI
-	@@site          = 'https://www.recurse.com'
-	@@client = OAuth2::Client.new(@@client_id, @@client_secret, site: @@site)
+	CLIENT_ID = Rails.application.secrets.RC_API_ID
+	CLIENT_SECRET = Rails.application.secrets.RC_API_SECRET
+	REDIRECT_URI  = Rails.application.secrets.RC_API_URI
+	SITE          = 'https://www.recurse.com'
 
 	def start_auth
-		redirect_to @@client.auth_code.authorize_url(redirect_uri: @@redirect_uri)
+		@client = OAuth2::Client.new(CLIENT_ID, CLIENT_SECRET, site: SITE)
+		redirect_to @client.auth_code.authorize_url(redirect_uri: REDIRECT_URI)
   end
 
   def auth_callback
+  	@client = OAuth2::Client.new(CLIENT_ID, CLIENT_SECRET, site: SITE)
   	code = params[:code]
-  	token = @@client.auth_code.get_token(code, redirect_uri: @@redirect_uri)
+  	token = @client.auth_code.get_token(code, redirect_uri: REDIRECT_URI)
   	session["token"] = token
   	@user = JSON.parse(token.get("/api/v1/people/me").body)
 
-  	
-  	@authed_user = {:name => @user["first_name"] + " " +  @user["last_name"], :email => @user["email"], :zulip_email => @user["email"]}
-  	create(@authed_user)
+  	authed_user = {:name => @user["first_name"] + " " +  @user["last_name"], :email => @user["email"], :zulip_email => @user["email"]}
+  	create(authed_user)
   end
 
 
