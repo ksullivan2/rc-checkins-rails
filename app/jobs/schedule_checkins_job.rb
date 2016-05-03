@@ -2,6 +2,7 @@ class ScheduleCheckinsJob < ActiveJob::Base
   queue_as :default
 
   def perform(recurser)
+    #this specifically skips the queue because it clears all existing jobs
   	RemoveExistingPingsJob.perform_now(recurser)
 
   	# find the correct time of day to ping

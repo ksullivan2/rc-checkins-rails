@@ -9,6 +9,6 @@ class ConfirmationJob < ActiveJob::Base
 	  	content = "You have left your check-in group. =("
 	  end
 
-    ZulipPingJob.perform_now(recurser.zulip_email, content)
+    ZulipPingJob.perform_later(recurser.zulip_email, content)
   end
 end

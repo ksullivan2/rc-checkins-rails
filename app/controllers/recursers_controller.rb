@@ -58,8 +58,7 @@ class RecursersController < ApplicationController
 		#group_id is a different edit case, it's not passed in as part of recurser_params
 		if params[:group_id]
 			@recurser.update({:group_id => params[:group_id]})
-			ConfirmationJob.perform_now(@recurser)
-			ScheduleCheckinsJob.perform_now(@recurser)
+			ScheduleCheckinsJob.perform_later(@recurser)
 			update_session_user(@recurser)
 			redirect_to "/"
 		elsif @recurser.update(recurser_params)
@@ -73,8 +72,7 @@ class RecursersController < ApplicationController
 	def leave_group
 		@recurser = Recurser.find(params[:id])
 		@recurser.update({:group_id => nil})
-		RemoveExistingPingsJob.perform_now(@recurser)
-		ConfirmationJob.perform_now(@recurser)
+		RemoveExistingPingsJob.perform_later(@recurser)
 		update_session_user(@recurser)
 		redirect_to "/"
 	end
