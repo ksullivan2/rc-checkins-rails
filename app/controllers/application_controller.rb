@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    @_current_user ||= session[:current_user_id] 
-  end
+  	@_current_user ||= Recurser.where(id: session[:user_id]).first
+	end
 end

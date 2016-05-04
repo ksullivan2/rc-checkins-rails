@@ -7,13 +7,13 @@
 		<%= image_tag("rclogo.png", :class => "rc-logo") %>
 		<div id="titles-container">
 			<h1 class='titles'>Sign up for Check-Ins</h1>
-			<h3 class='titles'>You are logged in as: <%= session[:current_user]["name"] %></h3>
+			<h3 class='titles'>You are logged in as: <%= @_current_user["name"] %></h3>
 		</div>
 		<%= image_tag("rclogo.png", :class => "rc-logo") %>
 		
 		<%= link_to image_tag("settings.png", :class => "settings-icon"), "/profile" %>
 
-		<div class="settings__tooltip<%=" settings__tooltip-visible" if !session[:current_user]["group_id"]%>">If your Zulip email is different than what's in the RC database, change it here before signing up for check-ins!</div>
+		<div class="settings__tooltip<%=" settings__tooltip-visible" if !@_current_user["group_id"]%>">If your Zulip email is different than what's in the RC database, change it here before signing up for check-ins!</div>
 	
 	</div>
 	<div class="thursday-warning<%=" thursday-warning-visible" if Time.zone.now.thursday?%>">Come back tomorrow to sign up for next week's check-ins! <br> <em>(your group will be cleared at midnight...)</em>
@@ -23,7 +23,7 @@
 		<%= render @groups %>
 	</div>
 
-	<%= button_to 'leave groups', {:controller => 'recursers', :action => 'leave_group', :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
+	<%= button_to 'leave groups', {:controller => 'recursers', :action => 'leave_group', :id => @_current_user["id"], :recurser => @_current_user}, {:class => "group__join-group-button", :method => :patch} %>
 
 
 </div>

@@ -28,13 +28,13 @@ class RecursersController < ApplicationController
 		@recurser = Recurser.find_by email: user[:email]
 		
 		if @recurser
-			update_session_user(@recurser)
+			update_session_user(@recurser.id)
 			redirect_to "/"
 
 		else
 			@recurser = Recurser.new(user)
 			if @recurser.save
-				update_session_user(@recurser)
+				update_session_user(@recurser.id)
 				redirect_to "/"
 			else
 				render 'new'
@@ -44,19 +44,18 @@ class RecursersController < ApplicationController
 	end
 
 	def edit
-		@recurser = Recurser.find(session[:current_user]["id"])
+		current_user #sets @_current_user variable
 	end
 
 	def update
-		@recurser = Recurser.find(session[:current_user]["id"])
+		current_user #sets @_current_user variable
+
 		#group_id is a different edit case, it's not passed in as part of recurser_params
 		if params[:group_id]
-			@recurser.update({:group_id => params[:group_id]})
-			ScheduleCheckinsJob.perform_later(@recurser)
-			update_session_user(@recurser)
+			@_current_user.update({:group_id => params[:group_id]})
+			ScheduleCheckinsJob.perform_later(@recurser)			
 			redirect_to "/"
-		elsif @recurser.update(recurser_params)
-			update_session_user(@recurser)
+		elsif @_current_user.update(recurser_params)
 			redirect_to "/"
 		else
 			render "edit"
@@ -64,10 +63,10 @@ class RecursersController < ApplicationController
 	end
 
 	def leave_group
-		@recurser = Recurser.find(params[:id])
-		@recurser.update({:group_id => nil})
-		RemoveExistingPingsJob.perform_later(@recurser)
-		update_session_user(@recurser)
+		current_user #sets @_current_user variable
+		
+		@_current_user.update({:group_id => nil})
+		RemoveExistingPingsJob.perform_later(@_current_user)
 		redirect_to "/"
 	end
 
@@ -84,8 +83,8 @@ class RecursersController < ApplicationController
 			params.require(:recurser).permit(:name, :email, :group_id, :zulip_email)
 		end
 
-		def update_session_user(recurser)
-			session[:current_user]= recurser
+		def update_session_user(id)
+			session[:user_id]= id
 		end
 
 		def create_client

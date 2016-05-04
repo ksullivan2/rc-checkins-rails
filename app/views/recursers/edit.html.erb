@@ -3,15 +3,15 @@
 
 
 	
-	<%= form_for @recurser, url: {action: "update"}, method: "patch" do |r| %>
-		<% if @recurser.errors.any? %>
+	<%= form_for @_current_user, url: {action: "update"}, method: "patch" do |r| %>
+		<% if @_current_user.errors.any? %>
 	    <div id="error_explanation">
 	      <h2>
-	        <%= pluralize(@recurser.errors.count, "error") %> prohibited
+	        <%= pluralize(@_current_user.errors.count, "error") %> prohibited
 	        your account from being updated:
 	      </h2>
 	      <ul>
-	        <% @recurser.errors.full_messages.each do |msg| %>
+	        <% @_current_user.errors.full_messages.each do |msg| %>
 	          <li><%= msg %></li>
 	        <% end %>
 	      </ul>

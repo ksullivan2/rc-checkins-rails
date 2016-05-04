@@ -33,7 +33,7 @@
 
 
 	
-	<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => session[:current_user]["id"], :recurser => session[:current_user]}, {:class => "group__join-group-button", :method => :patch} %>
+	<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => @_current_user["id"], :recurser => @_current_user}, {:class => "group__join-group-button", :method => :patch} %>
 	
 
 
