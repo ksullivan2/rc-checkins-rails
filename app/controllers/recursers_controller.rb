@@ -53,8 +53,11 @@ class RecursersController < ApplicationController
 		#group_id is a different edit case, it's not passed in as part of recurser_params
 		if params[:group_id]
 			@_current_user.update({:group_id => params[:group_id]})
-			schedule_pings			
-			redirect_to "/"
+
+			ping_success = schedule_pings
+			
+
+			redirect_to controller: :groups, action: :index , ping_success: ping_success.to_s
 		elsif @_current_user.update(recurser_params)
 			redirect_to "/"
 		else
@@ -123,7 +126,8 @@ class RecursersController < ApplicationController
 		  	pingtime = pingtime + (86400 * (6-weekday+2))
 		  end
 		  
-		  
+		  scheduled_something = false
+
 	    # schedule the correct number of jobs on correct days
 	    (start..4).each do |w|
 	    	# adds days to the pingtime(value for + is in seconds)
@@ -132,9 +136,12 @@ class RecursersController < ApplicationController
 	    	# schedule a ping
 	    	content = "Your check-in starts now in #{group.room}."
 	    	if dailypingtime > Time.zone.now
+	    		scheduled_something = true
 	    		ZulipPingJob.delay(queue: @_current_user.email, run_at: dailypingtime).perform_later(@_current_user.zulip_email, content)
 	    	end
 	    end
+
+	    scheduled_something #return whether something was scheduled
 	  end
 
 end

@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
   def current_user
   	@_current_user ||= Recurser.where(id: session[:user_id]).first
 	end
+
+	
 end

@@ -2,6 +2,10 @@ class GroupsController < ApplicationController
 	def index
 		if !session[:user_id].nil?
 			current_user #sets the @_current_user variable
+			@ping_success = params["ping_success"]
+			puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+			puts params["ping_success"]
+
 			@groups = Group.order("available_time_id ASC, room ASC")
 		else
 			redirect_to '/login'

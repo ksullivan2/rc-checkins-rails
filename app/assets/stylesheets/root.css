@@ -112,7 +112,7 @@
 	color: green;
 }
 
-.thursday-warning{
+.thursday-warning, .schedule-confirmation{
 	display: none;
 	width: 50%;
 	background: #404040;
@@ -124,6 +124,6 @@
   margin: auto;
 }
 
-.thursday-warning-visible{
+.thursday-warning-visible, .schedule-confirmation-visible{
 	display: block;
 }
