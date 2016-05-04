@@ -11,7 +11,7 @@
 		</div>
 		<%= image_tag("rclogo.png", :class => "rc-logo") %>
 		
-		<%= link_to image_tag("settings.png", :class => "settings-icon"), {:controller => 'recursers', :action => 'edit', :id => session[:current_user]["id"]} %>
+		<%= link_to image_tag("settings.png", :class => "settings-icon"), "/profile" %>
 
 		<div class="settings__tooltip<%=" settings__tooltip-visible" if !session[:current_user]["group_id"]%>">If your Zulip email is different than what's in the RC database, change it here before signing up for check-ins!</div>
 	

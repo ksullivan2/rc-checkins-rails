@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- root 'groups#index'
+  root 'groups#index'
  
 
   get 'login' => 'recursers#start_auth'
@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   
 
   resources :groups
-  resources :recursers
+  resources :recursers, :only => [:new, :create]
+
+  get 'profile' => "recursers#edit"
+  patch 'profile' => "recursers#update"
   
   
 

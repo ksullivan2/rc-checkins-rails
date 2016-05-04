@@ -1,9 +1,9 @@
 
 <link href='https://fonts.googleapis.com/css?family=Press+Start+2P|Source+Code+Pro:400,700' rel='stylesheet' type='text/css'>
 
-<% if @valid_id == true %>
+
 	
-	<%= form_for :recurser, url: {action: "update"}, method: "patch" do |r| %>
+	<%= form_for @recurser, url: {action: "update"}, method: "patch" do |r| %>
 		<% if @recurser.errors.any? %>
 	    <div id="error_explanation">
 	      <h2>
@@ -32,8 +32,4 @@
 		
 	<% end %>
 	
-<%end%>
 
-<% if @valid_id  == false%>	
-	<h2 class="form_header"> don't try to edit someone else's info, you sneak!</h2>
-<%end%>
