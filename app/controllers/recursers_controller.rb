@@ -53,7 +53,7 @@ class RecursersController < ApplicationController
 		#group_id is a different edit case, it's not passed in as part of recurser_params
 		if params[:group_id]
 			@_current_user.update({:group_id => params[:group_id]})
-			ScheduleCheckinsJob.perform_later(@recurser)			
+			schedule_pings			
 			redirect_to "/"
 		elsif @_current_user.update(recurser_params)
 			redirect_to "/"
@@ -64,9 +64,8 @@ class RecursersController < ApplicationController
 
 	def leave_group
 		current_user #sets @_current_user variable
-		
 		@_current_user.update({:group_id => nil})
-		RemoveExistingPingsJob.perform_later(@_current_user)
+		remove_existing_pings
 		redirect_to "/"
 	end
 
@@ -90,4 +89,52 @@ class RecursersController < ApplicationController
 		def create_client
 			OAuth2::Client.new(CLIENT_ID, CLIENT_SECRET, site: SITE)
 		end
+
+		def remove_existing_pings
+			jobs = Delayed::Job.where(queue: @_current_user.email)
+  		jobs.each do |job|
+  			Delayed::Job.find(job.id).destroy
+  		end
+  	end
+
+		def schedule_pings
+	    remove_existing_pings
+
+	  	# find the correct time of day to ping
+	  	# Time.parse will default to TODAY
+	    group = Group.find(@_current_user.group_id)
+	    pingtime = Time.parse(group.time)
+	    
+	    
+	    # checks if we're scheduling jobs for this week or next week
+	    # wday (4) == Thursday
+	    weekday = Time.zone.now.wday
+	    if weekday <= 4
+	    	thisweek = true
+	    	start = weekday
+	    	
+	    else
+	    	thisweek = false
+	    	start = 1
+	    end
+
+	    if !thisweek
+		  	#since Time.parse defaults to today, add some days to start next Monday
+		  	pingtime = pingtime + (86400 * (6-weekday+2))
+		  end
+		  
+		  
+	    # schedule the correct number of jobs on correct days
+	    (start..4).each do |w|
+	    	# adds days to the pingtime(value for + is in seconds)
+	    	dailypingtime = pingtime + (86400 * (w-start))
+
+	    	# schedule a ping
+	    	content = "Your check-in starts now in #{group.room}."
+	    	if dailypingtime > Time.zone.now
+	    		ZulipPingJob.delay(queue: @_current_user.email, run_at: dailypingtime).perform_later(@_current_user.zulip_email, content)
+	    	end
+	    end
+	  end
+
 end
