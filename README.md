@@ -17,8 +17,9 @@ To add a group, the API endpoint is /groups/new
 
 #### V2.0 goals:
  -  add group from main page
+ -  list of rooms to choose from
  -  admin permissions
- -  API endpoints for admins (remove groups, recursers, etc)
+ -  API endpoints for admins (remove groups, recursers, etc, add/change times, rooms in database)
 
 
 #### future goals:
