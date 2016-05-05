@@ -9,18 +9,26 @@ A reach goal is an email address that you could email to notify other members of
 
 I originally began this project using NodeJS and React, but decided that I wanted to learn Rails, so I re-started it.
 
-##Current State
-This project is not feature-complete.
 
-To view:
-([NEW! Deployed on Heroku](https://rccheckins.herokuapp.com/) Skip steps 1-3 & 5)
+###[V1.0 is live!] (http://checkins.recurse.com) 
+(requires RC account)
 
-1. Fork the project and save locally. 
-2. Run `bin/rake db:migrate` to create the ActiveRecord database
-3. Go to `localhost:3000`
-4. "Log in" by filling out the form. (will be replaced by Oauth)
-5. Add a few groups to your database by going to `localhost:3000/groups/new`
-6. Click "join group" to add your user to a group, which will remove it from any previous groups.
+To add a group, the API endpoint is /groups/new
 
-That's it for now!
+#### V2.0 goals:
+ -  add group from main page
+ -  admin permissions
+ -  API endpoints for admins (remove groups, recursers, etc)
+
+
+#### future goals:
+  - more connections to RC's API (current batches, etc)
+  - email checkins@recurse.com to message members of your group
+ 
+
+
+
+
+
+
 
