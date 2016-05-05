@@ -22,7 +22,17 @@ $(function(){
 		$(topicID).show()
 		$(topicChangeID).hide()
 	})
+
+
+	//show and hide appropriate elements
+	if ($("#schedule-confirmation").data("ping") != undefined){
+		$("#schedule-confirmation").show()
+	}
+
+	$("#schedule-confirmation").delay(5000).fadeOut('slow');
 })
+
+
 
 function get_id(partial, full){
 	return full.substring(partial.length)

@@ -141,6 +141,11 @@ class RecursersController < ApplicationController
 	    	end
 	    end
 
+	    jobs = Delayed::Job.where(queue: @_current_user.email)
+  		jobs.each do |job|
+  			puts job
+  		end
+
 	    scheduled_something #return whether something was scheduled
 	  end
 

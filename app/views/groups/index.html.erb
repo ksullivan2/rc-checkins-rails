@@ -16,10 +16,12 @@
 		<div class="settings__tooltip<%=" settings__tooltip-visible" if !@_current_user["group_id"]%>">If your Zulip email is different than what's in the RC database, change it here before signing up for check-ins!</div>
 	
 	</div>
-	<div class="thursday-warning<%=" thursday-warning-visible" if Time.zone.now.thursday?%>">Come back tomorrow to sign up for next week's check-ins! <br> <em>(your group will be cleared at midnight...)</em>
+	<div id="thursday-warning" <%="style=display:block;" if Time.zone.now.thursday?%>>Come back tomorrow to sign up for next week's check-ins! <br> <em>(your group will be cleared at midnight...)</em>
 	</div>
-	<div class="schedule-confirmation<%=" schedule-confirmation-visible" if @ping_success != nil %>"><%=@ping_success%>
-	</div>
+	
+	<%= content_tag "div", id:"schedule-confirmation", data:{ping:@ping_success} do%>
+		<%= @ping_success == true ? "Your check-ins have been scheduled." : "Something went wrong..." %>
+	<%end%>
 	
 	<div id="groups-container">
 		<%= render @groups %>

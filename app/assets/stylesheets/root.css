@@ -112,7 +112,7 @@
 	color: green;
 }
 
-.thursday-warning, .schedule-confirmation{
+#thursday-warning, #schedule-confirmation{
 	display: none;
 	width: 50%;
 	background: #404040;
@@ -122,8 +122,4 @@
   border-radius: .5em;
   text-align: center;
   margin: auto;
-}
-
-.thursday-warning-visible, .schedule-confirmation-visible{
-	display: block;
 }
