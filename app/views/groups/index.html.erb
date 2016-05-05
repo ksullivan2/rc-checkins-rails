@@ -19,8 +19,8 @@
 	<div id="thursday-warning" <%="style=display:block;" if Time.zone.now.thursday?%>>Come back tomorrow to sign up for next week's check-ins! <br> <em>(your group will be cleared at midnight...)</em>
 	</div>
 	
-	<%= content_tag "div", id:"schedule-confirmation", data:{ping:@ping_success} do%>
-		<%= @ping_success == true ? "Your check-ins have been scheduled." : "Something went wrong..." %>
+	<%= content_tag "div", id:"schedule-confirmation", class:"confirmation", data:{ping:@ping_success} do%>
+		<%= @ping_success == "true" ? "Your check-ins have been scheduled." : "Something went wrong..." %>
 	<%end%>
 	
 	<div id="groups-container">

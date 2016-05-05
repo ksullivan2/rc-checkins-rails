@@ -26,10 +26,12 @@ $(function(){
 
 	//show and hide appropriate elements
 	if ($("#schedule-confirmation").data("ping") != undefined){
-		$("#schedule-confirmation").show()
+		//$("#schedule-confirmation").show()
+		$("#schedule-confirmation").addClass("confirmation-active")
+
 	}
 
-	$("#schedule-confirmation").delay(5000).fadeOut('slow');
+	//$("#schedule-confirmation").delay(3000).fadeOut('slow');
 })
 
 
