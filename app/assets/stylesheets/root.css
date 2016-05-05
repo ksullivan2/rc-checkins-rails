@@ -143,6 +143,7 @@
 .confirmation.confirmation-active{
 	display: block;
 	animation: fadeOut 5s linear forwards;
+	z-index: 2;
 }
 
 @keyframes fadeOut {
