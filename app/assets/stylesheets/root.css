@@ -112,6 +112,11 @@
 	color: green;
 }
 
+.add-group-icon{
+	width: 64px;
+	height: 64px;
+}
+
 #thursday-warning{
 	display: none;
 	width: 50%;
@@ -151,4 +156,21 @@
 	15% { opacity: 1; transform: translateY(-300%);}
 	70% { opacity: 1; transform: translateY(-300%);}
 	100% { opacity: 0; }
+}
+
+#github-link{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin: 1em;
+	font-family: 'Source Code Pro', sans-serif ;
+}
+
+#github-link a{
+	text-decoration: none;
+}
+
+.github-icon{
+	width: 1em;
+	height: 1em;
 }

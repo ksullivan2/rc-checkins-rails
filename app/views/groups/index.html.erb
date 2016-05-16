@@ -29,5 +29,9 @@
 
 	<%= button_to 'leave groups', {:controller => 'recursers', :action => 'leave_group', :id => @_current_user["id"], :recurser => @_current_user}, {:class => "group__join-group-button", :method => :patch} %>
 
+	<div id="github-link">
+		<%= image_tag("github.ico", :class => "github-icon") %>
+		<a  href="https://github.com/recursecenter/wiki/wiki/Check-Ins-App-Contributors-guide">Want to contribute?</a>
+	</div>
 
 </div>
