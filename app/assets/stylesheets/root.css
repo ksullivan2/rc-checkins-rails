@@ -28,7 +28,7 @@
 
 .settings__tooltip{
 	display: none;
-	width: 10em;
+	width: 20em;
 	position: absolute;
 	top: 4em;
 	right: 1em;
@@ -50,12 +50,13 @@
   display: block;
   position: relative;
   top: -2em; 
-  margin-left: 8em;
+  margin-left: 85%;
 }
 
 .settings__tooltip-visible{
 	display: block;
 	z-index: 2;
+	animation: fadeOut 8s linear forwards;
 }
 
 
@@ -148,14 +149,20 @@
 
 .confirmation.confirmation-active{
 	display: block;
-	animation: fadeOut 5s linear forwards;
+	animation: fadeOutAndUp 5s linear forwards;
 	z-index: 2;
 }
 
-@keyframes fadeOut {
+@keyframes fadeOutAndUp {
 	0% 	{ opacity: 0; transform: translateY(0%);}
 	15% { opacity: 1; transform: translateY(-300%);}
 	70% { opacity: 1; transform: translateY(-300%);}
+	100% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+	0% 	{ opacity: 1;}
+	80% { opacity: 1; }
 	100% { opacity: 0; }
 }
 
