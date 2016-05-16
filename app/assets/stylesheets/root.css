@@ -55,6 +55,7 @@
 
 .settings__tooltip-visible{
 	display: block;
+	z-index: 2;
 }
 
 
