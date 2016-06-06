@@ -5,7 +5,7 @@ def date_of_next(day)
 end
 
 def main
-  job_time = date_of_next("Thursday") + 12.hours
+  job_time = date_of_next("Thursday") + 13.5.hours
   jobs = Delayed::Job.where(queue: "clear_groups")
 
   if jobs.length == 0
