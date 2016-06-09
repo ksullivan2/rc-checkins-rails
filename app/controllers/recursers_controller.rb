@@ -110,12 +110,11 @@ class RecursersController < ApplicationController
 
 
     # checks if we're scheduling jobs for this week or next week
-    # wday (4) == Thursday
+    # wday (3) == Weds
     weekday = Time.zone.now.wday
-    if weekday <= 4
+    if weekday <= 3
       thisweek = true
       start = weekday
-
     else
       thisweek = false
       start = 1
