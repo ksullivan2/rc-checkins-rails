@@ -10,19 +10,19 @@
 			<h3 class='titles'>You are logged in as: <%= @_current_user["name"] %></h3>
 		</div>
 		<%= image_tag("rclogo.png", :class => "rc-logo") %>
-		
+
 		<%= link_to image_tag("settings.png", :class => "settings-icon"), "/profile" %>
 
 		<div class="settings__tooltip<%=" settings__tooltip-visible" if !@_current_user["group_id"]%>">If your Zulip email is different than what's in the RC database, change it here before signing up for check-ins!</div>
-	
+
 	</div>
-	<div id="thursday-warning" <%="style=display:block;" if Time.zone.now.thursday?%>>Come back tomorrow to sign up for next week's check-ins! <br> <em>(your group will be cleared at midnight...)</em>
+
 	</div>
-	
+
 	<div class="confirmation <%=" confirmation-active" if @ping_success != nil %>">
 		<%= ping_success_helper(@ping_success) %>
 	</div>
-	
+
 	<div id="groups-container">
 		<%= render @groups %>
 	</div>
