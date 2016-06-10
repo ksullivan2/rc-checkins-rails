@@ -136,7 +136,13 @@ class RecursersController < ApplicationController
       content = "Your check-in starts now in #{group.room}."
       if dailypingtime > Time.zone.now
 	scheduled_something = true
-	ZulipPingJob.delay(queue: @_current_user.email, run_at: dailypingtime).perform_later(@_current_user.zulip_email, content)
+	ZulipPingJob.delay(
+          queue: @_current_user.email,
+          run_at: dailypingtime
+        ).perform_later(
+          @_current_user.zulip_email,
+          content
+        )
       end
     end
 
