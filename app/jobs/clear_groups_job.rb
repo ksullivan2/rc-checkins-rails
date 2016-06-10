@@ -1,5 +1,5 @@
 class ClearGroupsJob < ActiveJob::Base
-  queue_as :default
+  queue_as :clear_groups
 
   def perform(*args)
     recursers = Recurser.all
