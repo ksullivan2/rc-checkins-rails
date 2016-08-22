@@ -1,7 +1,7 @@
 class ZulipPingJob < ActiveJob::Base
   queue_as :default
 
-  @@uri = URI("https://api.zulip.com/v1/messages")
+  @@uri = URI("https://recurse.zulipchat.com/api/v1/messages")
 
   def perform(email, content)
   	zulip_post('type' => 'private', 'content' => content, 'to' => email)
