@@ -30,16 +30,14 @@ class RecursersController < ApplicationController
     if @recurser
       update_session_user(@recurser.id)
       redirect_to "/"
-
     else
       @recurser = Recurser.new(user)
       if @recurser.save
-	update_session_user(@recurser.id)
-	redirect_to "/"
+        update_session_user(@recurser.id)
+        redirect_to "/"
       else
-	render 'new'
+        render 'new'
       end
-
     end
   end
 
@@ -135,8 +133,8 @@ class RecursersController < ApplicationController
       # schedule a ping
       content = "Your check-in starts now in #{group.room}."
       if dailypingtime > Time.zone.now
-	scheduled_something = true
-	ZulipPingJob.delay(
+        scheduled_something = true
+        ZulipPingJob.delay(
           queue: @_current_user.email,
           run_at: dailypingtime
         ).perform_later(
@@ -153,5 +151,4 @@ class RecursersController < ApplicationController
 
     scheduled_something #return whether something was scheduled
   end
-
 end

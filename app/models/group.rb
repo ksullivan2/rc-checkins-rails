@@ -5,12 +5,11 @@ class Group < ActiveRecord::Base
   validates :room, presence: true
 
   def time
-  	if self.available_time_id
-	  	test = AvailableTime.find(self.available_time_id)
-	  	test.time
-	  else
-	  	"no time found"
-	  end
+    if self.available_time_id
+      test = AvailableTime.find(self.available_time_id)
+      test.time
+    else
+      "no time found"
+    end
   end
-
 end
