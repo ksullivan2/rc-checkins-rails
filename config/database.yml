@@ -28,15 +28,12 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: store_development
+  database: checkins_development
   pool: 5
-  username: kaleysullivan
-  password:
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: store_test
+  database: checkins_test
   pool: 5
-  username: kaleysullivan
-  password:
+
