@@ -1,33 +1,29 @@
-
-
-
-form{
-	text-align: center;
+form {
+  text-align: center;
 }
 
-.form_header{
-	padding-top: 2em;
-	font-family: 'Press Start 2P', sans-serif;
+.form_header {
+  padding-top: 2em;
+  font-family: 'Press Start 2P', sans-serif;
 }
 
-form p{
-	font-family: 'Source Code Pro', sans-serif ;
+form p {
+  font-family: 'Source Code Pro', sans-serif;
 }
 
 .form_input{
-	font-family: 'Source Code Pro', sans-serif ;
-	padding: 1em;
-	width: 40%;
-	font-size: 1.5em;
-	text-align: center;
+  font-family: 'Source Code Pro', sans-serif;
+  padding: 1em;
+  width: 40%;
+  font-size: 1.5em;
+  text-align: center;
 }
 
-
 .form_element{
-	font-family: 'Press Start 2P', sans-serif;
-	-webkit-appearance: none;
-	-moz-appearance: none; 
-	font-size: .5em;
-	padding: 1em;
+  font-family: 'Press Start 2P', sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: .5em;
+  padding: 1em;
 }
 
