@@ -1,40 +1,40 @@
 
 <div class="group<%=" group-afternoon" if group.time=="1:00PM"%>" >
-	<p><strong><%= group.room %> @ <%= group.time %></strong></p>
+  <p><strong><%= group.room %> @ <%= group.time %></strong></p>
 
 
-	
-	<div class="group__topic" id="group__topic<%=group.id%>">
-		<p>Topic: <%= group.topic %>
-			<%= image_tag("edit.png", {:class=> "group__topic__edit-button", :id => "group__topic__edit-button" + group.id.to_s}) %>
-		</p>
-	</div>
 
-	<div class="group__topic-change" id="group__topic-change<%=group.id%>">
-		
-		<%= form_for :group, url: group_path(group), method: :patch do |f| %>
-			<p><%= f.text_field :topic %>
-		  
-			  <%= image_submit_tag("save.png", {:class=> "group__topic-change__submit-button", :id=> "group__topic-change__submit-button" + group.id.to_s}) %>
-			  
-				<%= image_tag("cancel.png", {:class=> "group__topic-change__cancel-button", :id => "group__topic-change__cancel-button" + group.id.to_s}) %>
-			</p>
-			
-		  
-	  <% end %>
-		
-	</div>
+  <div class="group__topic" id="group__topic<%=group.id%>">
+    <p>Topic: <%= group.topic %>
+      <%= image_tag("edit.png", {:class=> "group__topic__edit-button", :id => "group__topic__edit-button" + group.id.to_s}) %>
+    </p>
+  </div>
 
-	
-	<br>
-	
-	<%= render group.recursers %>
-	<br>
+  <div class="group__topic-change" id="group__topic-change<%=group.id%>">
+
+    <%= form_for :group, url: group_path(group), method: :patch do |f| %>
+      <p><%= f.text_field :topic %>
+
+        <%= image_submit_tag("save.png", {:class=> "group__topic-change__submit-button", :id=> "group__topic-change__submit-button" + group.id.to_s}) %>
+
+        <%= image_tag("cancel.png", {:class=> "group__topic-change__cancel-button", :id => "group__topic-change__cancel-button" + group.id.to_s}) %>
+      </p>
 
 
-	
-	<%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => @_current_user["id"], :recurser => @_current_user}, {:class => "group__join-group-button", :method => :patch} %>
-	
+    <% end %>
+
+  </div>
+
+
+  <br>
+
+  <%= render group.recursers %>
+  <br>
+
+
+
+  <%= button_to 'join group', {:controller => 'recursers', :action => 'update', :group_id => group.id, :id => @_current_user["id"], :recurser => @_current_user}, {:class => "group__join-group-button", :method => :patch} %>
+
 
 
 </div>

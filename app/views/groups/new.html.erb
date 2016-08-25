@@ -4,7 +4,7 @@
 
 <%= form_for :group, url: groups_path do |g| %>
 
-	<% if @group.errors.any? %>
+  <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@group.errors.count, "error") %> prohibited
@@ -18,21 +18,21 @@
     </div>
   <% end %>
 
-	
-		<h2 class="form_header"><%= g.label :room %></h2>
-		<%= g.text_field :room, :class => "form_input" %>
-	
 
-	<h2 class="form_header">Time (select):</h2>
-		<%= g.collection_select(:available_time_id, AvailableTime.all, :id, :time, {}, 
-		html_options = {:class => "form_element"}) %>
-	
-	<h2 class="form_header">
-		<%= g.label :topic %></h2>
-		<%= g.text_field :topic, :class => "form_input" %>
-		<br><br>
-	
-	
-		<%= g.submit :class => "form_element" %>
-	
+    <h2 class="form_header"><%= g.label :room %></h2>
+    <%= g.text_field :room, :class => "form_input" %>
+
+
+  <h2 class="form_header">Time (select):</h2>
+    <%= g.collection_select(:available_time_id, AvailableTime.all, :id, :time, {},
+    html_options = {:class => "form_element"}) %>
+
+  <h2 class="form_header">
+    <%= g.label :topic %></h2>
+    <%= g.text_field :topic, :class => "form_input" %>
+    <br><br>
+
+
+    <%= g.submit :class => "form_element" %>
+
 <% end %>

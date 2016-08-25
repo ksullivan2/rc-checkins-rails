@@ -2,34 +2,34 @@
 <link href='https://fonts.googleapis.com/css?family=Press+Start+2P|Source+Code+Pro:400,700' rel='stylesheet' type='text/css'>
 
 
-	
-	<%= form_for @_current_user, url: {action: "update"}, method: "patch" do |r| %>
-		<% if @_current_user.errors.any? %>
-	    <div id="error_explanation">
-	      <h2>
-	        <%= pluralize(@_current_user.errors.count, "error") %> prohibited
-	        your account from being updated:
-	      </h2>
-	      <ul>
-	        <% @_current_user.errors.full_messages.each do |msg| %>
-	          <li><%= msg %></li>
-	        <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
 
-		<h2 class="form_header">
-			<%= r.label "Display Name" %></h2>
-			<%= r.text_field :name, :class => "form_input" %>
-		
-		<h2 class="form_header">
-			<%= r.label "Zulip email" %></h2>
-			<p>Change this field if the email you use on Zulip is different than the one in RC's database.</p>
-			<%= r.text_field :zulip_email, :class => "form_input" %><br><br>
-		
-		
-			<%= r.submit :value => "Update My Information", :class => "form_element" %>
-		
-	<% end %>
-	
+  <%= form_for @_current_user, url: {action: "update"}, method: "patch" do |r| %>
+    <% if @_current_user.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@_current_user.errors.count, "error") %> prohibited
+          your account from being updated:
+        </h2>
+        <ul>
+          <% @_current_user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h2 class="form_header">
+      <%= r.label "Display Name" %></h2>
+      <%= r.text_field :name, :class => "form_input" %>
+
+    <h2 class="form_header">
+      <%= r.label "Zulip email" %></h2>
+      <p>Change this field if the email you use on Zulip is different than the one in RC's database.</p>
+      <%= r.text_field :zulip_email, :class => "form_input" %><br><br>
+
+
+      <%= r.submit :value => "Update My Information", :class => "form_element" %>
+
+  <% end %>
+
 
