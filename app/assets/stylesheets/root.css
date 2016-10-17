@@ -78,6 +78,11 @@
   border-bottom: 5px solid green;
 }
 
+.group-checkout {
+  border-bottom: 5px solid darkgreen;
+}
+
+
 .group p {
   margin: 0;
   font-family: 'Source Code Pro', sans-serif;
@@ -164,11 +169,45 @@
   height: 1em;
 }
 
-div p:nth-of-type(7) ~ p {
+div.group-morning p:nth-of-type(7) ~ p {
     color: red;
 }
 
-div p:nth-of-type(7)::after {
+div.group-morning p:nth-of-type(7)::after {
+    content: "group full";
+    display: block;
+    border-top: 2px dashed;
+    height: 0px;
+    color: black;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    text-align: center;
+}
+
+div.group-afternoon p:nth-of-type(7) ~ p {
+    color: red;
+}
+
+div.group-afternoon p:nth-of-type(7)::after {
+    content: "group full";
+    display: block;
+    border-top: 2px dashed;
+    height: 0px;
+    color: black;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    text-align: center;
+}
+
+div.group-checkout p:nth-of-type(5) ~ p {
+    color: red;
+}
+
+div.group-checkout p:nth-of-type(5)::after {
     content: "group full";
     display: block;
     border-top: 2px dashed;

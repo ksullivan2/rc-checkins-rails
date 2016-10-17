@@ -23,9 +23,18 @@
     <%= ping_success_helper(@ping_success) %>
   </div>
 
+
+  <% ["10:30AM", "1:00PM", "6:00PM"].each do |time| %>
+  <h2 class="titles"><%= @descriptions[time] %></h2>
   <div id="groups-container">
-    <%= render @groups %>
+    <% @groups.each do |group| %>
+    <% if group.time == time %>
+    <%= render group %>
+    <% end %>
+    <% end %>
   </div>
+  <% end %>
+
 
   <%= button_to 'leave groups', {:controller => 'recursers', :action => 'leave_group', :id => @_current_user["id"], :recurser => @_current_user}, {:class => "group__join-group-button", :method => :patch} %>
 
