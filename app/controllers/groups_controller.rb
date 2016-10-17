@@ -6,6 +6,12 @@ class GroupsController < ApplicationController
       puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
       puts params["ping_success"]
 
+      @descriptions = {
+        "10:30AM" => "Morning checkins",
+        "1:00PM" => "Afternoon checkins",
+        "6:00PM" => "Technical checkouts",
+      }
+
       @groups = Group.order("available_time_id ASC, room ASC")
     else
       redirect_to '/login'
