@@ -28,7 +28,7 @@
   <h2 class="titles"><%= title %></h2>
   <div id="groups-container">
     <% @groups.each do |group| %>
-    <% if group.time in times %>
+    <% if times.include?(group.time) %>
     <%= render group %>
     <% end %>
     <% end %>
