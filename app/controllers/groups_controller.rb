@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 
       @sections = {
         "Checkins" => ["9:00AM", "10:30AM", "1:00PM"],
-        "Checkouts" => ["6:00PM", "12:00AM"]
+        "Checkouts" => ["6:00PM", "11:59PM"]
       }
 
       @groups = Group.order("available_time_id ASC, room ASC")
