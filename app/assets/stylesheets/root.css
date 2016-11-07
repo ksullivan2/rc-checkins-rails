@@ -74,15 +74,6 @@
 
 }
 
-.group-afternoon {
-  border-bottom: 5px solid green;
-}
-
-.group-checkout {
-  border-bottom: 5px solid darkgreen;
-}
-
-
 .group p {
   margin: 0;
   font-family: 'Source Code Pro', sans-serif;
