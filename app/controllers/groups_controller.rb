@@ -6,10 +6,9 @@ class GroupsController < ApplicationController
       puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
       puts params["ping_success"]
 
-      @descriptions = {
-        "10:30AM" => "Morning checkins",
-        "1:00PM" => "Afternoon checkins",
-        "6:00PM" => "Technical checkouts",
+      @sections = {
+        "Checkins" => ["9:00AM", "10:30AM", "1:00PM"],
+        "Checkouts" => ["6:00PM", "12:00AM"]
       }
 
       @groups = Group.order("available_time_id ASC, room ASC")

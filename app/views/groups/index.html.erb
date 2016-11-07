@@ -24,11 +24,11 @@
   </div>
 
 
-  <% ["10:30AM", "1:00PM", "6:00PM"].each do |time| %>
-  <h2 class="titles"><%= @descriptions[time] %></h2>
+  <% @sections.each do |title, times| %>
+  <h2 class="titles"><%= title %></h2>
   <div id="groups-container">
     <% @groups.each do |group| %>
-    <% if group.time == time %>
+    <% if group.time in times %>
     <%= render group %>
     <% end %>
     <% end %>
