@@ -27,7 +27,7 @@
   <% @sections.each do |title, times| %>
   <h2 class="titles"><%= title %></h2>
   <div id="groups-container">
-    <% @groups.each do |group| %>
+    <% @groups.to_a.sort{ |g1,g2| Time.parse(g1.time) <=> Time.parse(g2.time) }.each do |group| %>
     <% if times.include?(group.time) %>
     <%= render group %>
     <% end %>
