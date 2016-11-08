@@ -1,4 +1,4 @@
-<div class="group">
+<div class="group<%=" group-checkin" if @sections["Checkins"].include?(group.time) %><%=" group-checkout" if @sections["Checkouts"].include?(group.time) %>">
   <p><strong><%= group.room %> @ <%= group.time %></strong></p>
 
 

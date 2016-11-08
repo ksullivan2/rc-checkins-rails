@@ -160,28 +160,11 @@
   height: 1em;
 }
 
-div.group-morning p:nth-of-type(7) ~ p {
+div.group-checkin p:nth-of-type(7) ~ p {
     color: red;
 }
 
-div.group-morning p:nth-of-type(7)::after {
-    content: "group full";
-    display: block;
-    border-top: 2px dashed;
-    height: 0px;
-    color: black;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 10px;
-    text-align: center;
-}
-
-div.group-afternoon p:nth-of-type(7) ~ p {
-    color: red;
-}
-
-div.group-afternoon p:nth-of-type(7)::after {
+div.group-checkin p:nth-of-type(7)::after {
     content: "group full";
     display: block;
     border-top: 2px dashed;
