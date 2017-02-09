@@ -6,7 +6,7 @@
   <div id="header-container">
     <%= image_tag("rclogo.png", :class => "rc-logo") %>
     <div id="titles-container">
-      <h1 class='titles'>Sign up for Checkins or Checkouts</h1>
+      <h1 class='titles'>Sign up for Checkins</h1>
       <h4 class='titles'>For accountability and to find out what others are working on!</h4>
       <h3 class='titles'>You are logged in as: <%= @_current_user["name"] %></h3>
     </div>
@@ -26,14 +26,6 @@
 
 
   <% @sections.each do |title, times| %>
-  <h2 class="titles"><%= title %></h2>
-  <!-- <h4 class="titles"> -->
-  <!--   <% if title == "Checkins" %> -->
-  <!--     Meet at the beginning of the day, up to 6 people, everyone takes turns quickly (~30 seconds) says what they did yesterday and what they're planning to do today. -->
-  <!--   <% elsif title == "Checkouts" %> -->
-  <!--     Meet at the end of the day, up to 4 people, everyone takes turns opening their computer and showing what they worked on that day (usually code, but it could be a blog post, slides for a presentation, research notes, etc.). -->
-  <!--   <% end %> -->
-  <!-- </h4> -->
   <div id="groups-container">
     <% @groups.to_a.sort{ |g1,g2| Time.parse(g1.time) <=> Time.parse(g2.time) }.each do |group| %>
     <% if times.include?(group.time) %>
