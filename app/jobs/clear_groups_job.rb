@@ -2,10 +2,6 @@ class ClearGroupsJob < ActiveJob::Base
   queue_as :clear_groups
 
   def perform(*args)
-    recursers = Recurser.all
-    recursers.each do |rcer|
-      rcer.update({:group_id => nil})
-    end
     groups = Group.all
     groups.each do |group|
       group.update({:topic => "Anything!"})
