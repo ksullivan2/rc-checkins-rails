@@ -59,11 +59,17 @@
 }
 
 
-#groups-container {
+.groups-container {
   display:flex;
   flex-flow: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.new-group-link {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: .7em;
+  padding-top: 6em;
 }
 
 .group {
@@ -71,7 +77,6 @@
   padding: 1em;
   margin: 1em;
   position: relative;
-
 }
 
 .group p {
