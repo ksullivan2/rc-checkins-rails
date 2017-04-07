@@ -17,12 +17,14 @@ class ClearGroupsJob < ActiveJob::Base
     end
     rcers = Recurser.all
     rcers.each do |rcer|
-      rcer.update(:group_id => nil)
-      zulip_post(
-        'type' => 'private',
-        'content' => @@zulip_msg_content,
-        'to' => rcer.zulip_email
-      )
+      unless rcer.group_id.nil?
+        rcer.update(:group_id => nil)
+        zulip_post(
+          'type' => 'private',
+          'content' => @@zulip_msg_content,
+          'to' => rcer.zulip_email
+        )
+      end
     end
   end
 
